@@ -1,9 +1,9 @@
 ---
 title: "作業2"
 params:
-  group: 11
-  id: [1234, 5678]
-  name: ["王","李"]
+  group: 5
+  id: [710661121, 710661125]
+  name: ["蔡朕寧","林宜臻"]
 output:
   html_notebook:
     df_print: paged
@@ -37,7 +37,10 @@ labordata <- read_csv("http://people.stern.nyu.edu/wgreene/Econometrics/cornwell
 將labordata只留下第7年的資料
 
 ```{r}
-
+library(dplyr)
+library(magrittr)
+library(AER)
+labordata %<>% dplyr::filter(YEAR == 7)
 ```
 
 ### (2) 
@@ -46,7 +49,7 @@ $$wks_{i}=\beta_0+\beta_1 lwage_{i}+\epsilon_i$$
 
 請使用plot()畫出橫軸為每週工時（WKS）與縱軸為取對數後薪資（LWAGE, 後往直接稱呼「薪資」）的離散圖。
 ```{r}
-
+plot(labordata$WKS,labordata$LWAGE)
 ```
 
 ### (3)
@@ -54,7 +57,7 @@ $$wks_{i}=\beta_0+\beta_1 lwage_{i}+\epsilon_i$$
 [請不要使用任何程式或數字計算，單純文字故事邏輯]
 
 ```
-
+工會為勞工自行組成之利益團體，可與僱主集體談判工資薪水、工作時限和工作條件等並保障勞工權利。因此若勞工屬於工會的話可獲得較多的工資保障，有較高的薪資，可能造成工資係數的低估。相反的，若勞工不屬於工會的話，可能會因缺乏保障而拿到不合理的薪資，會造成工資係數的高估。
 ```
 
 ### (4)
