@@ -40,7 +40,7 @@ labordata <- read_csv("http://people.stern.nyu.edu/wgreene/Econometrics/cornwell
 library(dplyr)
 library(magrittr)
 library(AER)
-labordata %<>% dplyr::filter(YEAR == 7)
+labordata %<>% filter(YEAR == 7)
 ```
 
 ### (2) 
@@ -64,7 +64,9 @@ plot(labordata$WKS,labordata$LWAGE)
 在不做迴歸下，請用union分組計算lwage與wks的平均，並用數字結果來支持你在(c)小題的擔心。
 
 ```{r}
-
+labordata %>%
+group_by(UNION)%>%
+summarise(mean_lwage=mean(LWAGE),mean_wks=mean(WKS))
 ```
 
 ### (5)
@@ -73,7 +75,7 @@ $$wks_{i}=\beta_0+\beta_1 lwage_{i} + \beta_2 ed_{i} +\beta_3 union_{i} +\beta_4
 請用『純文字說明』(不要寫程式，不要算任何數字)：為什麼要再放教育水準及性別二個控制變數？
 
 ```
-
+因為教育水準也可能會影響工資係數，一般來講教育程度較高者會有較高的薪資；普遍來說目前職場上仍存在有性別歧視，因此性別也可能會影響工資係數，男性可能會比女性有較高的薪資。
 ```
 
 ### (6)
